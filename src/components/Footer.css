@@ -1,0 +1,47 @@
+.footer {
+  padding: 6rem 2rem;
+  text-align: center;
+  background: linear-gradient(180deg, #0d0208 0%, #0a0106 100%);
+  position: relative;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer-hearts {
+  font-size: 4rem;
+  filter: drop-shadow(0 0 30px rgba(232, 86, 143, 0.5));
+}
+
+.footer-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-style: italic;
+  background: linear-gradient(135deg, var(--soft-pink), var(--gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.footer-subtitle {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.4);
+  font-weight: 300;
+  letter-spacing: 0.2em;
+}
+
+.footer-divider {
+  width: 60px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.15);
+  margin: 1.5rem 0;
+}
+
+.footer-made {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.25);
+}

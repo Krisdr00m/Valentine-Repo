@@ -1,0 +1,50 @@
+.main-content {
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+}
+
+.main-content.visible {
+  opacity: 1;
+}
+
+.main-content.hidden {
+  opacity: 0;
+  overflow: hidden;
+  max-height: 100vh;
+}
+
+/* Common section header styles used across sections */
+.section-header {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.section-label {
+  display: inline-block;
+  font-size: 0.8rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+  border: 1px solid rgba(212, 168, 67, 0.3);
+  padding: 0.3rem 1rem;
+  border-radius: 20px;
+}
+
+.section-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  background: linear-gradient(135deg, var(--white), var(--soft-pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1rem;
+}
+
+.section-desc {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 300;
+  font-style: italic;
+  max-width: 500px;
+  margin: 0 auto;
+}

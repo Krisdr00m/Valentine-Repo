@@ -1,0 +1,51 @@
+.parallax-quote {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(ellipse at center, #1f0a18 0%, #0d0208 100%);
+}
+
+.quote-bg-heart {
+  position: absolute;
+  font-size: 20rem;
+  color: rgba(196, 30, 86, 0.06);
+  pointer-events: none;
+}
+
+.quote-content {
+  text-align: center;
+  max-width: 800px;
+  padding: 2rem;
+  z-index: 2;
+}
+
+.quote-mark {
+  font-family: 'Playfair Display', serif;
+  font-size: 8rem;
+  line-height: 0.5;
+  color: var(--rose);
+  opacity: 0.4;
+  margin-bottom: 1rem;
+}
+
+.quote-text {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--white);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.quote-author {
+  font-size: 1rem;
+  font-style: normal;
+  color: var(--gold);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 300;
+}

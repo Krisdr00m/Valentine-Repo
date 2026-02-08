@@ -1,0 +1,68 @@
+.letter-section {
+  padding: 8rem 2rem;
+  background: linear-gradient(180deg, #0d0208 0%, #120a10 50%, #0d0208 100%);
+}
+
+.letter-container {
+  max-width: 650px;
+  margin: 0 auto;
+  background: linear-gradient(145deg, #1a1015 0%, #0f080c 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.letter-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--rose), var(--pink), var(--gold), var(--pink), var(--rose));
+}
+
+.letter-seal {
+  text-align: center;
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  filter: drop-shadow(0 0 20px rgba(232, 86, 143, 0.4));
+}
+
+.letter-content {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 1.05rem;
+  line-height: 1.9;
+}
+
+.letter-content p {
+  margin-bottom: 1.5rem;
+}
+
+.letter-greeting {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-style: italic;
+  color: var(--soft-pink);
+  margin-bottom: 2rem !important;
+}
+
+.letter-closing {
+  margin-top: 2rem;
+  text-align: right;
+  font-style: italic;
+  color: var(--soft-pink);
+}
+
+.letter-signature {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  display: inline-block;
+  margin-top: 0.5rem;
+  background: linear-gradient(135deg, var(--pink), var(--gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
