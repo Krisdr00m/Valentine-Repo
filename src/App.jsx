@@ -4,7 +4,9 @@ import HorizontalIntro from './components/HorizontalIntro'
 import HeroSection from './components/HeroSection'
 import LoveStorySection from './components/LoveStorySection'
 import ParallaxQuote from './components/ParallaxQuote'
+import PhotoSlideshow from './components/PhotoSlideshow'
 import ReasonsSection from './components/ReasonsSection'
+import PoemsSection from './components/PoemsSection'
 import LetterSection from './components/LetterSection'
 import Footer from './components/Footer'
 
@@ -29,7 +31,9 @@ function App() {
           quote="I have found the one whom my soul loves."
           author="Song of Solomon 3:4"
         />
+        <PhotoSlideshow />
         <ReasonsSection />
+        <PoemsSection />
         <LetterSection />
         <Footer />
       </main>
