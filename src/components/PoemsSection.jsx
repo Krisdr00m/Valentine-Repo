@@ -152,30 +152,48 @@ export default function PoemsSection() {
             onClick={() => setActivePoem(null)}
           >
             <motion.div
-              className="poem-modal"
+              className="poem-modal-wrapper"
               variants={modalVariants}
               initial="hidden"
               animate="visible"
               exit="exit"
               onClick={(e) => e.stopPropagation()}
             >
-              <button
-                className="poem-close"
-                onClick={() => setActivePoem(null)}
-                aria-label="Close poem"
-              >
-                ✕
-              </button>
-              <div className="poem-modal-icon">💌</div>
-              <h3 className="poem-modal-title">{poems[activePoem].title}</h3>
-              <div className="poem-body">
-                {poems[activePoem].lines.map((line, j) => (
-                  <p key={j} className={`poem-line ${line === '' ? 'poem-break' : ''}`}>
-                    {line || '\u00A0'}
-                  </p>
-                ))}
+              {/* Burned edges — pinned to the non-scrolling wrapper */}
+              <div className="burned-edge burned-edge-top" />
+              <div className="burned-edge burned-edge-bottom" />
+              <div className="burned-edge burned-edge-left" />
+              <div className="burned-edge burned-edge-right" />
+              {/* Corner burn marks */}
+              <div className="burn-corner burn-tl" />
+              <div className="burn-corner burn-tr" />
+              <div className="burn-corner burn-bl" />
+              <div className="burn-corner burn-br" />
+              {/* Vignette overlay that stays on edges */}
+              <div className="aged-vignette" />
+
+              {/* Scrollable inner content */}
+              <div className="poem-modal">
+                <button
+                  className="poem-close"
+                  onClick={() => setActivePoem(null)}
+                  aria-label="Close poem"
+                >
+                  ✕
+                </button>
+                <div className="poem-modal-icon">💌</div>
+                <h3 className="poem-modal-title">{poems[activePoem].title}</h3>
+                <div className="letter-divider" />
+                <div className="poem-body">
+                  {poems[activePoem].lines.map((line, j) => (
+                    <p key={j} className={`poem-line ${line === '' ? 'poem-break' : ''}`}>
+                      {line || '\u00A0'}
+                    </p>
+                  ))}
+                </div>
+                <div className="letter-divider" />
+                <div className="poem-modal-footer">— with all my love 💕</div>
               </div>
-              <div className="poem-modal-footer">— with all my love 💕</div>
             </motion.div>
           </motion.div>
         )}

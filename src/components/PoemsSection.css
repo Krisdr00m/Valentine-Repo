@@ -159,8 +159,8 @@
 .poem-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.82);
+  backdrop-filter: blur(10px);
   z-index: 1000;
   display: flex;
   align-items: center;
@@ -168,27 +168,259 @@
   padding: 2rem;
 }
 
-/* Modal */
-.poem-modal {
-  background: linear-gradient(160deg, #1a0a15 0%, #0d0208 100%);
-  border: 1px solid rgba(232, 86, 143, 0.2);
-  border-radius: 24px;
+/* ============================================
+   AGED / BURNED LOVE LETTER MODAL
+   ============================================ */
+
+/* Outer wrapper — does NOT scroll.
+   All edge/corner/vignette effects live here
+   so they stay pinned to the visible border. */
+.poem-modal-wrapper {
+  position: relative;
   max-width: 520px;
   width: 100%;
-  padding: 3rem 2.5rem;
-  position: relative;
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 60px rgba(232, 86, 143, 0.08);
   max-height: 85vh;
-  overflow-y: auto;
+  border-radius: 3px;
+  transform: rotate(-0.5deg);
+
+  /* Parchment base on the wrapper so the bg is always visible */
+  background:
+    radial-gradient(ellipse at 20% 80%, rgba(139, 90, 43, 0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(139, 90, 43, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(160, 120, 60, 0.06) 0%, transparent 70%),
+    linear-gradient(
+      170deg,
+      #f5e6c8 0%,
+      #ecdbb0 15%,
+      #e8d5a3 30%,
+      #dcc895 50%,
+      #d4bb85 70%,
+      #c9a96e 100%
+    );
+  box-shadow:
+    0 4px 15px rgba(0, 0, 0, 0.3),
+    0 20px 60px rgba(0, 0, 0, 0.4),
+    inset 0 0 60px rgba(139, 90, 43, 0.1),
+    inset 0 0 120px rgba(101, 60, 20, 0.05);
+  overflow: hidden;          /* clips children to the rounded border */
 }
 
-.poem-close {
+/* Faint ruled-line texture on the wrapper (doesn't scroll) */
+.poem-modal-wrapper::before {
+  content: '';
   position: absolute;
-  top: 1rem;
-  right: 1.2rem;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.5);
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 28px,
+      rgba(139, 90, 43, 0.04) 28px,
+      rgba(139, 90, 43, 0.04) 29px
+    );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Foxing / age spots (doesn't scroll) */
+.poem-modal-wrapper::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 15% 25%, rgba(120, 80, 30, 0.12) 0%, transparent 30%),
+    radial-gradient(circle at 85% 75%, rgba(100, 65, 20, 0.1) 0%, transparent 25%),
+    radial-gradient(circle at 70% 15%, rgba(120, 80, 30, 0.08) 0%, transparent 20%),
+    radial-gradient(circle at 30% 85%, rgba(100, 65, 20, 0.08) 0%, transparent 25%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Vignette — dark edges that stay pinned */
+.aged-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+  box-shadow:
+    inset 0 0 80px rgba(60, 30, 5, 0.35),
+    inset 0 0 150px rgba(40, 20, 0, 0.15);
+  border-radius: 3px;
+}
+
+/* ---- Burned / Scorched Edges (pinned to wrapper) ---- */
+.burned-edge {
+  position: absolute;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.burned-edge-top {
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 24px;
+  background: linear-gradient(
+    180deg,
+    rgba(25, 12, 3, 0.8) 0%,
+    rgba(50, 25, 8, 0.45) 25%,
+    rgba(80, 45, 12, 0.2) 55%,
+    transparent 100%
+  );
+}
+
+.burned-edge-bottom {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 28px;
+  background: linear-gradient(
+    0deg,
+    rgba(25, 12, 3, 0.75) 0%,
+    rgba(50, 25, 8, 0.4) 25%,
+    rgba(80, 45, 12, 0.18) 55%,
+    transparent 100%
+  );
+}
+
+.burned-edge-left {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 20px;
+  background: linear-gradient(
+    90deg,
+    rgba(25, 12, 3, 0.7) 0%,
+    rgba(55, 30, 8, 0.35) 30%,
+    rgba(80, 45, 12, 0.12) 60%,
+    transparent 100%
+  );
+}
+
+.burned-edge-right {
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 22px;
+  background: linear-gradient(
+    270deg,
+    rgba(25, 12, 3, 0.65) 0%,
+    rgba(55, 30, 8, 0.3) 30%,
+    rgba(80, 45, 12, 0.1) 60%,
+    transparent 100%
+  );
+}
+
+/* ---- Corner Burn Marks (pinned to wrapper) ---- */
+.burn-corner {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.burn-tl {
+  top: 0;
+  left: 0;
+  background: radial-gradient(
+    ellipse at 0% 0%,
+    rgba(15, 8, 0, 0.85) 0%,
+    rgba(35, 18, 3, 0.5) 25%,
+    rgba(70, 40, 8, 0.2) 50%,
+    transparent 70%
+  );
+}
+
+.burn-tr {
+  top: 0;
+  right: 0;
+  background: radial-gradient(
+    ellipse at 100% 0%,
+    rgba(15, 8, 0, 0.7) 0%,
+    rgba(35, 18, 3, 0.4) 25%,
+    rgba(70, 40, 8, 0.15) 50%,
+    transparent 70%
+  );
+}
+
+.burn-bl {
+  bottom: 0;
+  left: 0;
+  background: radial-gradient(
+    ellipse at 0% 100%,
+    rgba(15, 8, 0, 0.65) 0%,
+    rgba(35, 18, 3, 0.35) 25%,
+    rgba(70, 40, 8, 0.12) 50%,
+    transparent 70%
+  );
+}
+
+.burn-br {
+  bottom: 0;
+  right: 0;
+  background: radial-gradient(
+    ellipse at 100% 100%,
+    rgba(15, 8, 0, 0.8) 0%,
+    rgba(35, 18, 3, 0.45) 25%,
+    rgba(70, 40, 8, 0.18) 50%,
+    transparent 70%
+  );
+}
+
+/* ---- Inner scrollable content ---- */
+.poem-modal {
+  position: relative;
+  z-index: 2;
+  padding: 3.5rem 2.5rem 2.5rem;
+  max-height: 85vh;
+  overflow-y: auto;
+  /* transparent bg so the wrapper parchment shows through */
+  background: transparent;
+
+  /* Hide scrollbar for a cleaner look */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(101, 60, 20, 0.25) transparent;
+}
+
+.poem-modal::-webkit-scrollbar {
+  width: 4px;
+}
+
+.poem-modal::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.poem-modal::-webkit-scrollbar-thumb {
+  background: rgba(101, 60, 20, 0.25);
+  border-radius: 2px;
+}
+
+/* ---- Letter Divider ---- */
+.letter-divider {
+  width: 60%;
+  height: 1px;
+  margin: 1rem auto;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(101, 60, 20, 0.3) 20%,
+    rgba(101, 60, 20, 0.4) 50%,
+    rgba(101, 60, 20, 0.3) 80%,
+    transparent 100%
+  );
+  position: relative;
+  z-index: 2;
+}
+
+/* ---- Close Button (aged look) ---- */
+.poem-close {
+  position: sticky;
+  top: 0;
+  float: right;
+  background: rgba(101, 60, 20, 0.12);
+  border: 1px solid rgba(101, 60, 20, 0.25);
+  color: rgba(80, 50, 15, 0.6);
   width: 36px;
   height: 36px;
   border-radius: 50%;
@@ -198,41 +430,52 @@
   align-items: center;
   justify-content: center;
   transition: all 0.3s;
+  z-index: 5;
+  margin-bottom: -36px;
 }
 
 .poem-close:hover {
-  background: rgba(232, 86, 143, 0.2);
-  color: var(--white);
-  border-color: var(--pink);
+  background: rgba(101, 60, 20, 0.25);
+  color: rgba(60, 30, 5, 0.9);
+  border-color: rgba(101, 60, 20, 0.4);
 }
 
+/* ---- Modal Content (ink on old paper) ---- */
 .poem-modal-icon {
   font-size: 2.5rem;
   text-align: center;
   margin-bottom: 0.5rem;
+  position: relative;
+  z-index: 2;
 }
 
 .poem-modal-title {
   font-family: 'Playfair Display', serif;
   font-size: 2rem;
   text-align: center;
-  background: linear-gradient(135deg, var(--soft-pink), var(--gold));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 2rem;
+  color: #3d2010;
+  -webkit-text-fill-color: #3d2010;
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+  margin-bottom: 0.5rem;
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
 }
 
 .poem-body {
   text-align: center;
-  padding: 0 0.5rem;
+  padding: 0.5rem 0.5rem;
+  position: relative;
+  z-index: 2;
 }
 
 .poem-line {
   font-family: 'Playfair Display', serif;
   font-style: italic;
   font-size: 1.05rem;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(50, 30, 10, 0.75);
   line-height: 2;
 }
 
@@ -242,11 +485,13 @@
 
 .poem-modal-footer {
   text-align: center;
-  margin-top: 2rem;
-  color: var(--gold);
+  margin-top: 1rem;
+  color: rgba(120, 70, 20, 0.55);
   font-size: 0.9rem;
   letter-spacing: 0.05em;
-  opacity: 0.7;
+  font-style: italic;
+  position: relative;
+  z-index: 2;
 }
 
 /* Responsive */
@@ -263,12 +508,21 @@
     transform: rotate(0deg);
   }
 
+  .poem-modal-wrapper {
+    transform: rotate(0deg);
+  }
+
   .poem-modal {
     padding: 2.5rem 1.5rem;
   }
 
   .poem-modal-title {
     font-size: 1.6rem;
+  }
+
+  .burn-corner {
+    width: 60px;
+    height: 60px;
   }
 }
 
