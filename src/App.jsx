@@ -7,6 +7,7 @@ import ParallaxQuote from './components/ParallaxQuote'
 import PhotoSlideshow from './components/PhotoSlideshow'
 import ReasonsSection from './components/ReasonsSection'
 import PoemsSection from './components/PoemsSection'
+import WishLanterns from './components/WishLanterns'
 import LetterSection from './components/LetterSection'
 import Footer from './components/Footer'
 
@@ -34,6 +35,7 @@ function App() {
         <PhotoSlideshow />
         <ReasonsSection />
         <PoemsSection />
+        <WishLanterns />
         <LetterSection />
         <Footer />
       </main>
