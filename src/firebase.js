@@ -1,13 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getDatabase } from 'firebase/database';
 
-// ⚠️  Replace with YOUR Firebase project config!
-// 1. Go to https://console.firebase.google.com
-// 2. Create a new project (disable Google Analytics if you want)
-// 3. Go to Project Settings → General → Your apps → Add web app
-// 4. Copy the firebaseConfig object and paste it below
-// 5. Then go to Realtime Database → Create Database → Start in TEST mode
-
 const firebaseConfig = {
   apiKey: "AIzaSyBXqhZ0c0nsWJv1SsHNUlYiHBsA6ZB-Qm0",
   authDomain: "valentine-day-proj.firebaseapp.com",

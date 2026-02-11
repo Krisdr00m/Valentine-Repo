@@ -8,7 +8,9 @@ import PhotoSlideshow from './components/PhotoSlideshow'
 import ReasonsSection from './components/ReasonsSection'
 import PoemsSection from './components/PoemsSection'
 import WishLanterns from './components/WishLanterns'
-import LetterSection from './components/LetterSection'
+import OurPlaylist from './components/OurPlaylist'
+import EscapeRoom from './components/EscapeRoom'
+import StarMap from './components/StarMap'
 import Footer from './components/Footer'
 
 function App() {
@@ -36,7 +38,9 @@ function App() {
         <ReasonsSection />
         <PoemsSection />
         <WishLanterns />
-        <LetterSection />
+        <OurPlaylist />
+        <EscapeRoom />
+        <StarMap />
         <Footer />
       </main>
     </>

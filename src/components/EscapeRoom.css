@@ -1,0 +1,427 @@
+/* ═══════════════════════════════════════════════════
+   Escape Room — "Unlock My Heart"
+   ═══════════════════════════════════════════════════ */
+
+.escape-section {
+  padding: 100px 20px;
+  background: linear-gradient(180deg, var(--dark) 0%, #1a0a1a 40%, #12061a 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.escape-section .section-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.escape-section .section-label {
+  display: inline-block;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+
+.escape-section .section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  color: var(--white);
+  margin: 0;
+}
+
+.escape-section .section-desc {
+  font-family: 'Lato', sans-serif;
+  color: var(--soft-pink);
+  font-size: 1rem;
+  margin-top: 10px;
+  opacity: 0.85;
+}
+
+/* ── Progress Locks ── */
+.escape-locks {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+}
+
+.lock-item {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.lock-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  transition: all 0.5s ease;
+}
+
+.lock-item.current .lock-icon {
+  border-color: var(--gold);
+  background: rgba(212, 168, 67, 0.12);
+  box-shadow: 0 0 20px rgba(212, 168, 67, 0.2);
+}
+
+.lock-item.solved .lock-icon {
+  border-color: var(--pink);
+  background: rgba(232, 86, 143, 0.15);
+  box-shadow: 0 0 16px rgba(232, 86, 143, 0.25);
+}
+
+.lock-item.final .lock-icon {
+  width: 58px;
+  height: 58px;
+  font-size: 1.6rem;
+}
+
+.lock-item.final.solved .lock-icon {
+  border-color: var(--gold);
+  background: rgba(212, 168, 67, 0.2);
+  box-shadow: 0 0 25px rgba(212, 168, 67, 0.35);
+}
+
+.lock-line {
+  width: 32px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.lock-item.solved .lock-line {
+  background: linear-gradient(90deg, var(--pink), var(--gold));
+}
+
+@media (max-width: 480px) {
+  .lock-line {
+    width: 18px;
+  }
+  .lock-icon {
+    width: 42px;
+    height: 42px;
+    font-size: 1.1rem;
+  }
+}
+
+/* ── Puzzle Card ── */
+.escape-content {
+  max-width: 560px;
+  margin: 0 auto;
+  position: relative;
+  min-height: 350px;
+}
+
+.puzzle-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 40px 32px;
+  text-align: center;
+  backdrop-filter: blur(12px);
+  position: relative;
+  overflow: hidden;
+}
+
+.puzzle-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--deep-rose), var(--gold), var(--pink));
+}
+
+.puzzle-number {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+  opacity: 0.8;
+}
+
+.puzzle-emoji {
+  font-size: 2.5rem;
+  margin-bottom: 16px;
+}
+
+.puzzle-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  color: var(--white);
+  margin: 0 0 10px 0;
+}
+
+.puzzle-description {
+  font-family: 'Lato', sans-serif;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0 0 24px 0;
+}
+
+/* ── Scrambled Letters ── */
+.puzzle-scrambled {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.scramble-letter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 52px;
+  background: rgba(212, 168, 67, 0.12);
+  border: 2px solid var(--gold);
+  border-radius: 8px;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0;
+}
+
+/* ── Input ── */
+.puzzle-input-wrapper {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.puzzle-input {
+  flex: 1;
+  max-width: 300px;
+  padding: 12px 18px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--white);
+  font-family: 'Lato', sans-serif;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.puzzle-input:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 12px rgba(212, 168, 67, 0.2);
+}
+
+.puzzle-input::placeholder {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.puzzle-submit {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--rose), var(--deep-rose));
+  color: var(--white);
+  font-family: 'Lato', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.puzzle-submit:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ── Wrong Answer ── */
+.wrong-answer {
+  color: #ff6b8a;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.9rem;
+  margin: 0 0 12px 0;
+}
+
+/* ── Hint ── */
+.hint-toggle {
+  background: none;
+  border: none;
+  color: var(--gold);
+  font-family: 'Lato', sans-serif;
+  font-size: 0.85rem;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.3s;
+  padding: 6px 14px;
+}
+
+.hint-toggle:hover {
+  opacity: 1;
+}
+
+.hint-text {
+  color: rgba(255, 255, 255, 0.6);
+  font-family: 'Lato', sans-serif;
+  font-size: 0.9rem;
+  font-style: italic;
+  line-height: 1.5;
+  margin-top: 8px;
+  overflow: hidden;
+}
+
+/* ── Success State ── */
+.puzzle-success {
+  margin-top: 20px;
+}
+
+.success-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--pink), var(--rose));
+  color: var(--white);
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  box-shadow: 0 0 30px rgba(232, 86, 143, 0.4);
+}
+
+.puzzle-success p {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  color: var(--soft-pink);
+  font-style: italic;
+}
+
+/* ═══════════════════════════════════════════════════
+   Secret Message Reveal
+   ═══════════════════════════════════════════════════ */
+.secret-reveal {
+  text-align: center;
+  position: relative;
+  padding-top: 20px;
+}
+
+.confetti-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.confetti-piece {
+  position: absolute;
+  top: 0;
+  border-radius: 2px;
+}
+
+.secret-icon {
+  font-size: 3.5rem;
+  margin-bottom: 16px;
+}
+
+.secret-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  color: var(--gold);
+  margin: 0 0 8px 0;
+}
+
+.secret-subtitle {
+  font-family: 'Lato', sans-serif;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.95rem;
+  margin: 0 0 30px 0;
+}
+
+.secret-letter {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(212, 168, 67, 0.2);
+  border-radius: 16px;
+  padding: 36px 32px;
+  text-align: left;
+  position: relative;
+}
+
+.secret-letter::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--pink), var(--gold));
+  border-radius: 16px 16px 0 0;
+}
+
+.secret-line {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.8;
+  margin: 0;
+}
+
+.secret-break {
+  height: 12px;
+}
+
+/* ── Ambient glow ── */
+.escape-section::after {
+  content: '';
+  position: absolute;
+  bottom: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 400px;
+  background: radial-gradient(ellipse, rgba(232, 86, 143, 0.06), transparent 70%);
+  pointer-events: none;
+}
+
+/* ── Responsiveness ── */
+@media (max-width: 600px) {
+  .puzzle-card {
+    padding: 30px 20px;
+  }
+
+  .puzzle-input-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .puzzle-input {
+    max-width: 100%;
+  }
+
+  .puzzle-submit {
+    width: 100%;
+  }
+
+  .scramble-letter {
+    width: 40px;
+    height: 44px;
+    font-size: 1.2rem;
+  }
+
+  .secret-letter {
+    padding: 24px 18px;
+  }
+}
