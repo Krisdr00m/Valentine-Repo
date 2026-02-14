@@ -4,23 +4,6 @@ import { db } from '../firebase';
 import { ref, push, onValue, serverTimestamp } from 'firebase/database';
 import './OurPlaylist.css';
 
-const container = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.1 },
-  },
-};
-
-const cardItem = {
-  hidden: { opacity: 0, y: 30, scale: 0.95 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
-  },
-};
-
 export default function OurPlaylist() {
   const [songs, setSongs] = useState([]);
   const [showForm, setShowForm] = useState(false);
@@ -96,20 +79,19 @@ export default function OurPlaylist() {
 
       {/* Song Cards */}
       {songs.length > 0 && (
-        <motion.div
-          className="playlist-grid"
-          variants={container}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-50px' }}
-        >
+        <div className="playlist-grid">
+          <AnimatePresence>
           {songs.map((song, i) => {
             const accent = accents[i % accents.length];
             return (
               <motion.div
                 key={song.id}
                 className="song-card"
-                variants={cardItem}
+                initial={{ opacity: 0, y: 30, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                layout
                 style={{
                   background: accent.bg,
                   borderColor: accent.border,
@@ -141,7 +123,8 @@ export default function OurPlaylist() {
               </motion.div>
             );
           })}
-        </motion.div>
+          </AnimatePresence>
+        </div>
       )}
 
       {/* Empty state */}
