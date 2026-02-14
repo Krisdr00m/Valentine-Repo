@@ -9,14 +9,14 @@ const milestones = [
     description: 'The moment our eyes met, time stood still. A glance that spoke a thousand words.',
   },
   {
-    emoji: '☕',
-    title: 'First Date',
-    description: 'Nervous laughs, warm coffee, and the beginning of something beautiful.',
+    emoji: '📱',
+    title: 'Reconnecting Call',
+    description: 'You called me n the cruise and from then a spark rekindled.',
   },
   {
     emoji: '💑',
-    title: 'Falling in Love',
-    description: 'Every day brought us closer. Every moment felt like magic.',
+    title: 'Falling for each other',
+    description: 'Every day brought us closer. We started talking more often and havent stopped since.',
   },
   {
     emoji: '🏠',

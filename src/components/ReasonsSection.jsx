@@ -8,7 +8,6 @@ const reasons = [
   { emoji: '😂', reason: 'Your laugh is absolutely contagious' },
   { emoji: '🧡', reason: 'Your kindness knows no bounds' },
   { emoji: '🌟', reason: 'You make ordinary moments extraordinary' },
-  { emoji: '🎵', reason: 'The way you hum your favorite songs' },
   { emoji: '🫶', reason: 'You love with your whole heart' },
   { emoji: '✨', reason: 'You inspire me to be better every day' },
 ];

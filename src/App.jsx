@@ -31,8 +31,8 @@ function App() {
         />
         <LoveStorySection />
         <ParallaxQuote
-          quote="I have found the one whom my soul loves."
-          author="Song of Solomon 3:4"
+          quote="Love is a combination of care, commitment, knowledge, responsibility, respect, and trust"
+          author="Bell Hooks"
         />
         <PhotoSlideshow />
         <ReasonsSection />

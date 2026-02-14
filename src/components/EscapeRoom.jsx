@@ -20,49 +20,58 @@ const puzzles = [
   {
     emoji: '💭',
     title: 'The Beginning',
-    description: 'What month and year did we first meet?',
-    hint: 'Think back to when it all started... format: month year',
-    answer: 'january 2024',
-    successMessage: 'That was the day everything changed 💕',
+    description: 'What year did Kristophe & Jahmayka meet?',
+    hint: 'Think waaay back... over 10 years ago 👀',
+    answer: '2015',
+    successMessage: 'And the rest is history 💕',
   },
   {
-    emoji: '🗺️',
-    title: 'Our Special Place',
-    description: 'Unscramble this word — it\'s the place of our first date:',
-    scrambled: 'RAKP',
-    hint: 'We spent the whole afternoon here, surrounded by nature 🌿',
-    answer: 'park',
-    successMessage: 'I knew right then you were special ✨',
+    emoji: '�',
+    title: 'Our First Kiss',
+    description: 'Where did Kris and Jahm have their first kiss?',
+    hint: 'It was somewhere private... think about whose space it was �',
+    answer: 'jahms room',
+    successMessage: 'A moment I\'ll never forget ✨',
   },
   {
-    emoji: '🔢',
-    title: 'Crack the Code',
-    description: 'Solve this: Take the day of my birthday, multiply by 2, and subtract 5. What do you get?',
-    hint: 'My birthday is on the 15th... do the math 🧮',
-    answer: '25',
-    successMessage: 'You really do know me 🥰',
+    emoji: '�',
+    title: 'Who Made the First Move?',
+    description: 'Who asked who / who liked each other first?',
+    hint: 'Think about it... was it really just one of us? 🤔',
+    answer: 'neither',
+    successMessage: 'It was always mutual 🥰',
+  },
+  {
+    emoji: '🎨',
+    title: 'Our Colors',
+    description: 'What are our favorite colors?',
+    hint: 'Think earthy tones... 🌿�',
+    answer: 'green brown',
+    successMessage: 'We just match like that 💚�',
   },
   {
     emoji: '💝',
     title: 'The Final Key',
-    description: 'Complete this sentence: You are my ________',
-    hint: 'It\'s something that shines in the sky at night... ⭐',
-    answer: 'star',
+    description: 'What is Kristophe\'s favorite thing about Jahm?',
+    hint: 'It\'s about the kind of person she is... think about her heart 💗',
+    answer: 'how caring she is',
     successMessage: 'You unlocked my heart 💖',
   },
 ];
 
 // The secret message revealed after all puzzles are solved
-const SECRET_MESSAGE = `My Dearest Love,
+const SECRET_MESSAGE = `Dear Jahmayka,
 
-If you're reading this, it means you've unlocked every piece of my heart.
+I wanted to take a moment to simply say thank you. I'm truly grateful that you've allowed me back into your life. You're someone who inspires me to be a better man — more patient, more open, and more loving.
 
-Every puzzle you just solved is a memory I hold close — the day we met, our favorite place, the little things only we know. You are the answer to every question my heart has ever asked.
+It's rare to meet someone whose happiness brings so much joy to another person, but that's what happens when I see you smile. Knowing you're happy makes me happy in a way that's hard to explain, and I feel incredibly lucky to experience that.
 
-I love you more than words on a screen could ever say. But I hope this made you smile, even just a little.
+I know this isn't our first time walking this path, but this time feels different. I've found myself more willing to open my heart, more ready to be present, and more certain about the care I have for you.
 
-Forever & Always,
-Yours 💕`;
+Thank you for helping me become softer, kinder, and more tender. Thank you for being such a genuinely sweet and caring person. And thank you for being a new light in my life.
+
+With appreciation and love,
+Kristophe`;
 
 const lockVariants = {
   locked: { scale: 1 },
@@ -89,7 +98,18 @@ export default function EscapeRoom() {
     const trimmed = userInput.trim().toLowerCase();
     if (!trimmed) return;
 
-    if (trimmed === puzzle.answer) {
+    // Normalize: strip punctuation, extra spaces, and common filler words
+    const normalize = (str) =>
+      str.toLowerCase().replace(/[''.,!?-]/g, '').replace(/\s+/g, ' ').trim();
+
+    const userNorm = normalize(trimmed);
+    const answerNorm = normalize(puzzle.answer);
+
+    // Also accept answers with commas/and between words (e.g. "green, brown" or "green and brown")
+    const userWords = userNorm.replace(/\band\b/g, '').replace(/\s+/g, ' ').trim();
+    const answerWords = answerNorm.replace(/\band\b/g, '').replace(/\s+/g, ' ').trim();
+
+    if (userNorm === answerNorm || userWords === answerWords) {
       // Correct!
       setJustSolved(true);
       setIsWrong(false);

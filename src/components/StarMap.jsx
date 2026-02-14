@@ -11,9 +11,9 @@ import './StarMap.css';
   to match the night you first met (or any
   special night you want to commemorate).
 */
-const STAR_MAP_DATE = 'January 15, 2024';
-const STAR_MAP_TIME = '8:42 PM';
-const STAR_MAP_LOCATION = 'New York, NY';
+const STAR_MAP_DATE = 'November 20, 2025';
+const STAR_MAP_TIME = '9:00 PM';
+const STAR_MAP_LOCATION = 'Our Sky';
 const STAR_MAP_COORDS = '40.7128° N, 74.0060° W';
 const STAR_MAP_MESSAGE = 'The night the stars aligned for us';
 
@@ -26,74 +26,88 @@ const STAR_MAP_MESSAGE = 'The night the stars aligned for us';
 const constellations = [
   {
     name: 'Cassiopeia',
+    meaning: 'The Queen — symbolizes confidence and beauty',
     stars: [
-      { x: 140, y: 120 },
-      { x: 175, y: 85 },
-      { x: 210, y: 110 },
-      { x: 245, y: 80 },
-      { x: 275, y: 115 },
+      { x: 280, y: 80 },
+      { x: 315, y: 50 },
+      { x: 350, y: 75 },
+      { x: 385, y: 45 },
+      { x: 420, y: 80 },
     ],
     connections: [[0, 1], [1, 2], [2, 3], [3, 4]],
   },
   {
-    name: 'Orion',
+    name: 'Andromeda',
+    meaning: 'The Princess — rescued by love, symbolizes being saved by love',
     stars: [
-      { x: 500, y: 200 }, // Betelgeuse
-      { x: 580, y: 210 }, // Bellatrix
-      { x: 520, y: 290 }, // belt 1
-      { x: 545, y: 295 }, // belt 2
-      { x: 570, y: 300 }, // belt 3
-      { x: 510, y: 380 }, // Saiph
-      { x: 590, y: 370 }, // Rigel
+      { x: 440, y: 160 },
+      { x: 395, y: 190 },
+      { x: 345, y: 210 },
+      { x: 380, y: 230 },
     ],
-    connections: [[0, 1], [0, 2], [1, 4], [2, 3], [3, 4], [2, 5], [4, 6]],
+    connections: [[0, 1], [1, 2], [1, 3]],
+  },
+  {
+    name: 'Perseus',
+    meaning: 'The Hero — symbolizes courage, devotion, and fighting for love',
+    stars: [
+      { x: 240, y: 170 },
+      { x: 220, y: 210 },
+      { x: 255, y: 240 },
+      { x: 200, y: 260 },
+      { x: 265, y: 290 },
+      { x: 230, y: 310 },
+    ],
+    connections: [[0, 1], [0, 2], [1, 3], [2, 4], [4, 5]],
+  },
+  {
+    name: 'Taurus',
+    meaning: 'The Bull — symbolizes passion and pursuit',
+    stars: [
+      { x: 130, y: 370 },
+      { x: 155, y: 350 },
+      { x: 170, y: 380 },
+      { x: 110, y: 340 },
+      { x: 190, y: 330 },
+      { x: 145, y: 395 },
+    ],
+    connections: [[0, 1], [0, 2], [1, 4], [0, 5], [1, 3]],
+  },
+  {
+    name: 'Pegasus',
+    meaning: 'The Winged Horse — symbolizes freedom, inspiration, and soaring together',
+    stars: [
+      { x: 530, y: 220 },
+      { x: 620, y: 210 },
+      { x: 625, y: 310 },
+      { x: 535, y: 320 },
+      { x: 580, y: 370 },
+    ],
+    connections: [[0, 1], [1, 2], [2, 3], [3, 0], [3, 4]],
+  },
+  {
+    name: 'Aries',
+    meaning: 'The Ram — symbolizes new beginnings and boldness',
+    stars: [
+      { x: 340, y: 320 },
+      { x: 370, y: 340 },
+      { x: 395, y: 350 },
+    ],
+    connections: [[0, 1], [1, 2]],
   },
   {
     name: 'Ursa Major',
+    meaning: 'The Great Bear — symbolizes guidance, steadiness, and always being there',
     stars: [
-      { x: 350, y: 460 },
-      { x: 400, y: 440 },
-      { x: 440, y: 470 },
-      { x: 430, y: 510 },
-      { x: 380, y: 520 },
-      { x: 340, y: 550 },
-      { x: 310, y: 580 },
+      { x: 600, y: 480 },
+      { x: 640, y: 460 },
+      { x: 675, y: 490 },
+      { x: 665, y: 530 },
+      { x: 620, y: 535 },
+      { x: 580, y: 560 },
+      { x: 550, y: 590 },
     ],
     connections: [[0, 1], [1, 2], [2, 3], [3, 4], [4, 0], [4, 5], [5, 6]],
-  },
-  {
-    name: 'Leo',
-    stars: [
-      { x: 620, y: 500 },
-      { x: 660, y: 470 },
-      { x: 700, y: 490 },
-      { x: 720, y: 530 },
-      { x: 680, y: 560 },
-      { x: 640, y: 545 },
-    ],
-    connections: [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 0]],
-  },
-  {
-    name: 'Lyra',
-    stars: [
-      { x: 160, y: 350 }, // Vega
-      { x: 140, y: 390 },
-      { x: 180, y: 390 },
-      { x: 135, y: 430 },
-      { x: 185, y: 430 },
-    ],
-    connections: [[0, 1], [0, 2], [1, 3], [2, 4], [3, 4]],
-  },
-  {
-    name: 'Gemini',
-    stars: [
-      { x: 680, y: 130 }, // Castor
-      { x: 720, y: 160 }, // Pollux
-      { x: 670, y: 190 },
-      { x: 710, y: 220 },
-      { x: 690, y: 260 },
-    ],
-    connections: [[0, 1], [0, 2], [1, 3], [2, 4], [3, 4]],
   },
 ];
 
@@ -391,6 +405,32 @@ export default function StarMap() {
             </div>
           </div>
           <p className="plaque-coords">{STAR_MAP_COORDS}</p>
+        </motion.div>
+
+        {/* Constellation Meanings */}
+        <motion.div
+          className="starmap-legend"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.7, duration: 0.8 }}
+        >
+          <h3 className="legend-title">What the Stars Mean</h3>
+          <div className="legend-grid">
+            {constellations.map((c, i) => (
+              <motion.div
+                key={c.name}
+                className="legend-item"
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.8 + i * 0.1, duration: 0.5 }}
+              >
+                <span className="legend-name">✦ {c.name}</span>
+                <span className="legend-meaning">{c.meaning}</span>
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
       </motion.div>
     </section>

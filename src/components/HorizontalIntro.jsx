@@ -60,7 +60,7 @@ export default function HorizontalIntro({ onComplete }) {
     if (currentSlide < slides.length - 1) {
       const timer = setTimeout(() => {
         setCurrentSlide((prev) => prev + 1);
-      }, 1800);
+      }, 3000);
       return () => clearTimeout(timer);
     } else {
       const timer = setTimeout(() => {

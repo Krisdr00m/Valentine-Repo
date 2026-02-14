@@ -2,28 +2,22 @@ import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import './PhotoSlideshow.css';
 
-// Replace these with your actual photos — drop images into src/assets/photos/
-// and import them, or use URLs.
+import img1 from '../assets/IMG_0060.JPEG';
+import img2 from '../assets/IMG_3686.JPEG';
+import img3 from '../assets/IMG_9875.JPEG';
+
 const photos = [
   {
-    src: '/photos/photo1.jpg',
-    caption: 'Our first adventure together',
+    src: img1,
+    caption: 'Us 💕',
   },
   {
-    src: '/photos/photo2.jpg',
-    caption: "That sunset we'll never forget",
+    src: img2,
+    caption: 'My favorite person',
   },
   {
-    src: '/photos/photo3.jpg',
-    caption: 'Laughing until it hurt',
-  },
-  {
-    src: '/photos/photo4.jpg',
-    caption: 'You & me, always',
-  },
-  {
-    src: '/photos/photo5.jpg',
-    caption: 'My favorite place is next to you',
+    src: img3,
+    caption: 'Every moment with you is special',
   },
 ];
 
